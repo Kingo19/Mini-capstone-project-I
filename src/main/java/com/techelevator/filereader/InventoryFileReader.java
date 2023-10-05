@@ -41,7 +41,7 @@ public class InventoryFileReader {
             // Save current line in a string.
             String currentCandy = inventoryInputScanner.nextLine();
             // Split it to different items in an array.
-            String[] currentCandyArray = currentCandy.split("|"); // Do we need to do something with this?
+            String[] currentCandyArray = currentCandy.split("\\|"); // Do we need to do something with this?
             if (currentCandyArray[0].equals("CH")) {
                 CandyStoreItem newCandy = new ChocolateCandy(currentCandyArray[2], currentCandyArray[1], Double.parseDouble(currentCandyArray[3]), currentCandyArray[4]);
                 candyItems.put(currentCandyArray[1], newCandy);
