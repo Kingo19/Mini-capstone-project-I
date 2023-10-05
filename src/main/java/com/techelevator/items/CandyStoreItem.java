@@ -21,7 +21,13 @@ public abstract class CandyStoreItem {
         this.name = name;
         this.ID = ID;
         this.price = price;
-        this.isWrapped = isWrapped;
+
+        if(isWrapped.equals("T")){
+            this.isWrapped = "Y";
+        }
+        else if(isWrapped.equals("F")){
+            this.isWrapped = "N";
+        }
     }
 
 

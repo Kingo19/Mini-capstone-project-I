@@ -24,6 +24,7 @@ public class Application {
         while(true){
             if(choice == 1){
                 getInventory();
+                break;
             }
             else if(choice == 2){
                 //method for Make Sale

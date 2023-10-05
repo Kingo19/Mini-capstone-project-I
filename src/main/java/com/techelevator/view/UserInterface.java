@@ -20,9 +20,24 @@ public class UserInterface {
     }
 
 
+    //print f syntax
+    // %starts a 'format statement'
+    // - forces left align
+    // 10 gives 10 character spaces of width
+    // s because it's a string
     public void printInventory(List<CandyStoreItem> inventory){
         //loop through List print out each item
-        System.out.printf("| %-10s | %-10s | %-10s | %-8s | %4s |%n", "ID", "Name", "Wrapper", "Quantity", "Price");
+        System.out.printf("%-5s  %-15s  %-10s  %-10s  %-10s %n", "ID", "Name", "Wrapper", "Quantity", "Price");
+
+
+        for(CandyStoreItem candy : inventory){
+            if(candy.getQuantity() == 0){
+                System.out.printf("%-5s  %-15s  %-10s  %-10s  %-10s %n", candy.getID(), candy.getName(), candy.isWrapped(), "SOLD OUT", "$" + candy.getPrice());
+            }
+            else {
+                System.out.printf("%-5s  %-15s  %-10s  %-10s  %-10s %n", candy.getID(), candy.getName(), candy.isWrapped(), candy.getQuantity(), "$" + candy.getPrice());
+            }
+        }
 
     }
 
