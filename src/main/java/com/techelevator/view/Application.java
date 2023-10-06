@@ -64,7 +64,7 @@ public class Application {
                 TODO put up barriers so the user can't add more than $100 at a time
                 TODO put up barriers so the balance can't equal more than $1000
                 TODO put up barriers so the user must input more than $0
-                
+
 
                  */
 
