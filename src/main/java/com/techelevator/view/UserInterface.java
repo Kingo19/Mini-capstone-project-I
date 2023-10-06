@@ -77,7 +77,12 @@ public class UserInterface {
 
 
     }
+    public void printReceipt(List<CandyStoreItem> itemsBought) {
 
+        for (CandyStoreItem candy : itemsBought){
+                System.out.printf("%-5s  %-15s  %-30s  %-10s  %-5s  %n", candy.getQuantity(), candy.getName(), candy.getDescription(),  "$" + candy.getPrice(), "$" + candy.getQuantity() * candy.getPrice());
+            }
+        }
 
+    }
 
-}

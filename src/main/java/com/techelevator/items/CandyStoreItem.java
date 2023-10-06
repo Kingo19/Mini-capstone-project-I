@@ -67,4 +67,5 @@ public abstract class CandyStoreItem {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

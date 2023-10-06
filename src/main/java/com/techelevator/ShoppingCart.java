@@ -29,4 +29,7 @@ public class ShoppingCart {
 
     }
 
+    public List<CandyStoreItem> getCartItems() {
+        return cartItems;
+    }
 }

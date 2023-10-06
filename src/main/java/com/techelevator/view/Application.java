@@ -96,11 +96,15 @@ public class Application {
             else {
                 //Method for complete sale
                 double subtotal = cart.getSubtotal();
-                register.giveChange(subtotal);
+                register.getBalance();
+                ui.printMessage(register.changeStatement());
+                ui.printReceipt(cart.getCartItems());
 
             }
 
         }
+
+
 
 
     }
