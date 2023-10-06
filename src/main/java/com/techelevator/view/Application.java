@@ -95,10 +95,21 @@ public class Application {
             }
             else {
                 //Method for complete sale
+                //gather all info needed for receipt
                 double subtotal = cart.getSubtotal();
-                register.getBalance();
-                ui.printMessage(register.changeStatement());
-                ui.printReceipt(cart.getCartItems());
+                double change = register.getBalance();
+                String changeStatement = register.changeStatement();
+
+                //send info to UI to print
+                ui.printReceipt(cart.getCartItems(), subtotal, change, changeStatement);
+
+                //clear register & cart
+                register.clearRegister();
+                cart.clearCartItems();
+
+                //break out to main menu
+                break;
+
 
             }
 
@@ -117,3 +128,4 @@ public class Application {
 
 //TODO Method for validating ints & doubles
 //TODO specific error for sold out
+//TODO fix nickle problem

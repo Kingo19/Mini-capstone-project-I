@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CashRegister {
-    private double change;
-    private double balance = 0.0;
-    public double getBalance() {
 
+    private double balance = 0.0;
+
+    public double getBalance() {
         return balance;
     }
 
@@ -22,6 +22,7 @@ public class CashRegister {
             return "Invalid amount";
         }
 
+        //call the log printer
 
     }
 
@@ -36,13 +37,12 @@ public class CashRegister {
     //take from balance
     public void removeMoney(CandyStoreItem candy) {
         balance -= (candy.getPrice() * candy.getQuantity());
+
+        //call the log printer
+
     }
 
-////    public double getChange(double subtotal) {
-////        double change = balance - subtotal;
-////        this.change = change;
-////        return change;
-//    }
+
     public String changeStatement() {
         double remaining = balance;
         double[] denominations = new double[]{20.0, 10.0 , 5.0 , 1.0 , 0.25 , 0.10 , 0.5};
@@ -59,6 +59,10 @@ public class CashRegister {
             }
         }
        return currencyStatements;
+    }
+
+    public void clearRegister(){
+        balance = 0;
     }
 
 

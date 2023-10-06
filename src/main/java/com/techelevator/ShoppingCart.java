@@ -24,12 +24,15 @@ public class ShoppingCart {
             //adding that to the subtotal
             subtotal += itemTotal;
         }
-
         return subtotal;
-
     }
 
     public List<CandyStoreItem> getCartItems() {
         return cartItems;
     }
+
+    public void clearCartItems(){
+        cartItems.clear();
+    }
+
 }

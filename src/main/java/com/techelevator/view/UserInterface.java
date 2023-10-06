@@ -77,12 +77,22 @@ public class UserInterface {
 
 
     }
-    public void printReceipt(List<CandyStoreItem> itemsBought) {
+    public void printReceipt(List<CandyStoreItem> itemsBought, double subtotal, double change, String changeStatement) {
 
         for (CandyStoreItem candy : itemsBought){
-                System.out.printf("%-5s  %-15s  %-30s  %-10s  %-5s  %n", candy.getQuantity(), candy.getName(), candy.getDescription(),  "$" + candy.getPrice(), "$" + candy.getQuantity() * candy.getPrice());
-            }
+            System.out.printf("%-5s  %-15s  %-30s  %-10s  %-5s  %n", candy.getQuantity(), candy.getName(), candy.getDescription(),  "$" + candy.getPrice(), "$" + candy.getQuantity() * candy.getPrice());
         }
 
+        System.out.println("");
+        System.out.println("Total: $" + subtotal);
+        System.out.println("");
+        System.out.println("Change: $" + change);
+        System.out.println(changeStatement);
+
     }
+
+
+
+
+}
 
