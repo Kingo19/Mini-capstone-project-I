@@ -3,6 +3,7 @@ package com.techelevator.view;
 import com.techelevator.CandyStore;
 import com.techelevator.CashRegister;
 import com.techelevator.Inventory;
+import com.techelevator.ShoppingCart;
 import com.techelevator.items.CandyStoreItem;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class Application {
     private CashRegister register = new CashRegister();
    private UserInterface ui = new UserInterface();
    private Inventory inv = new Inventory();
+   private ShoppingCart cart = new ShoppingCart();
 
     public static void main(String[] args) {
         Application app = new Application();
@@ -52,47 +54,62 @@ public class Application {
         while(true){
             int choice = ui.printSaleMenu(register.getBalance());
             if(choice == 1){
-                //when we try to put this in its own method it didn't work
-
                 //asking user for amount
                 double amountToAdd = ui.askAmountToAdd();
+
                 //tell the cash register to add that amount to its balance
-
-                register.addToBalance(amountToAdd);
-
-
                 String registerMessage = register.addToBalance(amountToAdd);
                 ui.printMessage(registerMessage);
 
-
             }
             else if(choice == 2){
-                //method for Select Product
+                //get and print inventory
                 getInventory();
-                ui.selectProduct();
 
+                //get information about candy and quantity
+                String productIDSelected = ui.selectProduct();
+                int selectedQuantity = ui.selectQuantity();
+
+                //validate ID
+                try{
+                    CandyStoreItem itemToAdd = inv.copyCandy(productIDSelected, selectedQuantity); // could throw null pointer
+
+                    //validate enough inventory
+                    if(!inv.validateQuantity(selectedQuantity, productIDSelected)){
+                        ui.printMessage("Enter valid quantity");
+                    }
+                    //validate money
+                    else if(!register.validateEnoughMoney(itemToAdd)){
+                        ui.printMessage("Not enough balance");
+                    }
+                    //if validated, remove from inventory, subtract from balance, add to shopping cart
+                    else {
+                        inv.removeFromInventory(selectedQuantity, productIDSelected);
+                        register.removeMoney(itemToAdd);
+                        cart.addToCart(itemToAdd);
+                    }
+                }
+                catch (NullPointerException e){
+                    ui.printMessage("Invalid Candy");
+                }
             }
-            else{
+            else {
                 //Method for complete sale
+                double subtotal = cart.getSubtotal();
+                register.giveChange(subtotal);
+
             }
 
         }
 
 
-
-
-
     }
 
-//        private void takeMoney(){
-//        //asking user for amount
-//        double amountToAdd = ui.askAmountToAdd();
-//        //tell the cash register to add that amount to its balance
-//        register.addToBalance(amountToAdd);
-//
-//    }
 
-    ;
 
 
 }
+
+
+//TODO Method for validating ints & doubles
+//TODO specific error for sold out

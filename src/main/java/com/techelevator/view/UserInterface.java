@@ -44,8 +44,13 @@ public class UserInterface {
     }
 
     public String selectProduct() {
-        System.out.println("Select product ID");
+        System.out.println("Select product ID: ");
         return myScanner.nextLine();
+    }
+    public int selectQuantity(){
+        System.out.println("Select Quantity: ");
+        return Integer.parseInt(myScanner.nextLine());
+
     }
 
 

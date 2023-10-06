@@ -1,7 +1,7 @@
 package com.techelevator;
 
 import com.techelevator.filereader.InventoryFileReader;
-import com.techelevator.items.CandyStoreItem;
+import com.techelevator.items.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +32,56 @@ public class Inventory {
 
 
         return inventoryList;
+    }
+
+    public boolean validateQuantity(int quantity, String itemID){
+        CandyStoreItem candy = inventoryMap.get(itemID);
+
+        if(candy.getQuantity() - quantity >= 0 && quantity > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean validateID(String candyID){
+        if(inventoryMap.containsKey(candyID)){
+            return true;
+        }
+        return false;
+    }
+
+    public void removeFromInventory(int quantity, String itemID){
+        CandyStoreItem candy = inventoryMap.get(itemID);
+        candy.setQuantity(candy.getQuantity() - quantity);
+    }
+
+    public CandyStoreItem copyCandy(String itemID, int quantity){
+        CandyStoreItem candyToCopy = inventoryMap.get(itemID); //where null pointer could occur
+
+        CandyStoreItem newCandy;
+
+        if(candyToCopy instanceof ChocolateCandy){
+            newCandy = new ChocolateCandy(candyToCopy.getName(), candyToCopy.getID(), candyToCopy.getPrice(), candyToCopy.isWrapped());
+        }
+        else if (candyToCopy instanceof LicoriceCandy){
+            newCandy = new LicoriceCandy(candyToCopy.getName(), candyToCopy.getID(), candyToCopy.getPrice(), candyToCopy.isWrapped());
+        }
+        else if (candyToCopy instanceof SourCandy){
+            newCandy = new SourCandy(candyToCopy.getName(), candyToCopy.getID(), candyToCopy.getPrice(), candyToCopy.isWrapped());
+        }
+        else{
+            newCandy = new HardCandy(candyToCopy.getName(), candyToCopy.getID(), candyToCopy.getPrice(), candyToCopy.isWrapped());
+        }
+
+        //assigning new candy appropriate quantity
+        newCandy.setQuantity(quantity);
+
+        return newCandy;
+
+
+
     }
 
 
