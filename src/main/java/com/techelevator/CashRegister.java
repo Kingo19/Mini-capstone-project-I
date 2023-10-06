@@ -8,9 +8,15 @@ public class CashRegister {
     }
 
     //Add to balance
-    public double addToBalance(double amountToAdd){
-        balance += amountToAdd;
-        return balance;
+    public String addToBalance(double amountToAdd){
+        if (amountToAdd <= 100 && amountToAdd > 0 && balance + amountToAdd <= 1000) {
+            balance += amountToAdd;
+            return "Transaction successful";
+        } else {
+            return "Invalid amount";
+        }
+
+
     }
 
     //take from balance
