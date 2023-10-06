@@ -104,6 +104,7 @@ public class Application {
                 ui.printReceipt(cart.getCartItems(), subtotal, change, changeStatement);
 
                 //clear register & cart
+                register.printChange();
                 register.clearRegister();
                 cart.clearCartItems();
 

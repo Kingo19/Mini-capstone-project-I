@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import com.techelevator.filereader.LogFileWriter;
 import com.techelevator.items.CandyStoreItem;
 
 import java.util.ArrayList;
@@ -8,6 +9,8 @@ import java.util.List;
 public class CashRegister {
 
     private double balance = 0.0;
+    //instantiated log file in register because it has access to all the necessary information
+    private LogFileWriter fileWriter = new LogFileWriter();
 
     public double getBalance() {
         return balance;
@@ -15,14 +18,17 @@ public class CashRegister {
 
     //Add to balance
     public String addToBalance(double amountToAdd) {
+        double oldBalance = balance;
         if (amountToAdd <= 100 && amountToAdd > 0 && balance + amountToAdd <= 1000) {
             balance += amountToAdd;
+            fileWriter.writeLogMoneyAdded(oldBalance, balance);
             return "Transaction successful";
         } else {
             return "Invalid amount";
         }
 
         //call the log printer
+
 
     }
 
@@ -36,9 +42,11 @@ public class CashRegister {
 
     //take from balance
     public void removeMoney(CandyStoreItem candy) {
-        balance -= (candy.getPrice() * candy.getQuantity());
+        double amountToDeduct = candy.getPrice() * candy.getQuantity();
+        balance -= amountToDeduct;
 
         //call the log printer
+        fileWriter.writeLogCandySelection(candy, balance);
 
     }
 
@@ -63,6 +71,10 @@ public class CashRegister {
 
     public void clearRegister(){
         balance = 0;
+    }
+
+    public void printChange(){
+        fileWriter.writeLogChangeGiven(balance);
     }
 
 
