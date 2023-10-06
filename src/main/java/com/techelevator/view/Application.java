@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-
-    UserInterface ui = new UserInterface();
-    Inventory inv = new Inventory();
+    private CashRegister register = new CashRegister();
+   private UserInterface ui = new UserInterface();
+   private Inventory inv = new Inventory();
 
     public static void main(String[] args) {
         Application app = new Application();
@@ -47,8 +47,6 @@ public class Application {
     }
 
     private void makeSale(){
-        //instantiate one cash register for this entire makeSale() transaction
-        CashRegister register = new CashRegister();
 
         //MAKE SALE SUBMENU
         while(true){
@@ -59,18 +57,15 @@ public class Application {
                 //asking user for amount
                 double amountToAdd = ui.askAmountToAdd();
                 //tell the cash register to add that amount to its balance
-                register.addToBalance(amountToAdd);
-                /*TODO why does it not work when we try to put the above in its own method?
-                TODO put up barriers so the user can't add more than $100 at a time
-                TODO put up barriers so the balance can't equal more than $1000
-                TODO put up barriers so the user must input more than $0
-                
-
-                 */
+                String registerMessage = register.addToBalance(amountToAdd);
+                ui.printMessage(registerMessage);
 
             }
             else if(choice == 2){
                 //method for Select Product
+                getInventory();
+                ui.selectProduct();
+
             }
             else{
                 //Method for complete sale
@@ -84,7 +79,7 @@ public class Application {
 
     }
 
-//    private void takeMoney(){
+//        private void takeMoney(){
 //        //asking user for amount
 //        double amountToAdd = ui.askAmountToAdd();
 //        //tell the cash register to add that amount to its balance

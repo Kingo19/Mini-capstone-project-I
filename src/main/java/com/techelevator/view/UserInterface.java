@@ -34,9 +34,18 @@ public class UserInterface {
         return choice;
     }
 
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
+
     public double askAmountToAdd(){
         System.out.println("Enter amount to add: ");
         return Double.parseDouble(myScanner.nextLine());
+    }
+
+    public String selectProduct() {
+        System.out.println("Select product ID");
+        return myScanner.nextLine();
     }
 
 
