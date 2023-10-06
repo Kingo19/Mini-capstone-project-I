@@ -1,6 +1,7 @@
 package com.techelevator.view;
 
 import com.techelevator.CandyStore;
+import com.techelevator.CashRegister;
 import com.techelevator.items.CandyStoreItem;
 
 import java.util.List;
@@ -18,6 +19,27 @@ public class UserInterface {
 
         return choice;
     }
+
+    public int printSaleMenu(double currentBalance){
+        //is it bad to instantiate a Cash Register here?
+
+        System.out.println("(1) Take Money");
+        System.out.println("(2) Select Products");
+        System.out.println("(3) Complete Sale");
+        System.out.println("Current Customer Balance: $" + currentBalance);
+
+        int choice = myScanner.nextInt();
+        myScanner.nextLine();
+
+        return choice;
+    }
+
+    public double askAmountToAdd(){
+        System.out.println("Enter amount to add: ");
+        return Double.parseDouble(myScanner.nextLine());
+    }
+
+
 
 
     //print f syntax
@@ -38,6 +60,7 @@ public class UserInterface {
                 System.out.printf("%-5s  %-15s  %-10s  %-10s  %-10s %n", candy.getID(), candy.getName(), candy.isWrapped(), candy.getQuantity(), "$" + candy.getPrice());
             }
         }
+
 
     }
 
