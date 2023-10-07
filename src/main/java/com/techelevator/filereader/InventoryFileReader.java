@@ -59,4 +59,5 @@ public class InventoryFileReader {
         }
         return candyItems;
     }
+
 }
