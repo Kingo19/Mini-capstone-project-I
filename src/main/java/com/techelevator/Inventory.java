@@ -28,9 +28,6 @@ public class Inventory {
             CandyStoreItem currentCandyObject = currentCandy.getValue(); //grab the value off the Map (which is the candy object)
             inventoryList.add(currentCandyObject); //adding that candy object to the above array list
         }
-
-
-
         return inventoryList;
     }
 
