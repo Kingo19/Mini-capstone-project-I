@@ -39,8 +39,14 @@ public class ShoppingCartTest {
         cart.addToCart(candy1);
         cart.addToCart(candy2);
 
+        //TODO: we need to set the quantity here. It's defaulting to 100.
+        //TODO: either that or the expectedSubtotal should be price * 100 for both candyA and candyB
+        //TODO: change the delta to .001
+
         double expectedSubtotal = (1.25 * 257) + (2 * 2);
         double actualSubtotal = cart.getSubtotal();
+
+
 
         assertEquals(expectedSubtotal, actualSubtotal, 1.0); // Using delta for double comparison
     }

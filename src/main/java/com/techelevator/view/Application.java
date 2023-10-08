@@ -127,6 +127,3 @@ public class Application {
 }
 
 
-//TODO Method for validating ints & doubles
-//TODO specific error for sold out
-//TODO fix nickle problem

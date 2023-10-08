@@ -52,12 +52,13 @@ public class CashRegister {
 
 
     public String changeStatement() {
-        double remaining = balance;
-        double[] denominations = new double[]{20.0, 10.0 , 5.0 , 1.0 , 0.25 , 0.10 , 0.5};
+
+        double[] denominations = new double[]{20.0, 10.0 , 5.0 , 1.0 , 0.25 , 0.10 , 0.05};
+        String[] names = new String[]{"Twenties", "Tens", "Fives" , "Ones", "Quarters", "Dimes","Nickles"};
         int[] amount = new int[7];
 
-        String[] names = new String[]{"Twenties", "Tens", "Fives" , "Ones", "Quarters", "Dimes","Nickles"};
         String currencyStatements = "";
+        double remaining = balance;
 
         for(int i = 0; i < 7 ; i++) {
             amount[i] = (int) (remaining / denominations[i]);

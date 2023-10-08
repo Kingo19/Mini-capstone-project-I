@@ -76,9 +76,10 @@ public class Inventory {
         newCandy.setQuantity(quantity);
 
         return newCandy;
+    }
 
-
-
+    public CandyStoreItem getInventoryItem(String candyID){
+        return inventoryMap.get(candyID);
     }
 
 
