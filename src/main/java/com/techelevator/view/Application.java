@@ -98,7 +98,7 @@ public class Application {
                 }
             }
             else if (choice == 3){
-                //Method for complete sale
+
                 //gather all info needed for receipt
                 double subtotal = cart.getSubtotal();
                 double change = register.getBalance();
