@@ -15,10 +15,17 @@ public class UserInterface {
         System.out.println("(2) Make Sale");
         System.out.println("(3) Quit");
 
-        int choice = myScanner.nextInt();
-        myScanner.nextLine();
+        try {
+            int choice = Integer.parseInt(myScanner.nextLine());
 
-        return choice;
+
+            if (choice != 1 && choice !=2 && choice !=3) {
+                return 4;
+            }  return choice;
+        } catch (Exception e) {
+            return 4;
+        }
+
     }
 
     public int printSaleMenu(double currentBalance){
@@ -28,12 +35,20 @@ public class UserInterface {
         System.out.println("(1) Take Money");
         System.out.println("(2) Select Products");
         System.out.println("(3) Complete Sale");
-        System.out.println("Current Customer Balance: $" + currentBalance);
+        System.out.printf("%-20s %.2f %n", "Current Customer Balance: $", currentBalance);
 
-        int choice = myScanner.nextInt();
-        myScanner.nextLine();
 
-        return choice;
+        try {
+            int choice = Integer.parseInt(myScanner.nextLine());
+
+
+            if (choice != 1 && choice !=2 && choice !=3) {
+                return 4;
+            }  return choice;
+        } catch (Exception e) {
+            return 4;
+        }
+
     }
 
     public void printMessage(String message) {
@@ -42,7 +57,12 @@ public class UserInterface {
 
     public double askAmountToAdd(){
         System.out.println("Enter amount to add: ");
-        return Double.parseDouble(myScanner.nextLine());
+        try {
+            return Double.parseDouble(myScanner.nextLine());
+        } catch (Exception e) {
+            return 0.00;
+        }
+
     }
 
     public String selectProduct() {
@@ -51,7 +71,12 @@ public class UserInterface {
     }
     public int selectQuantity(){
         System.out.println("Select Quantity: ");
-        return Integer.parseInt(myScanner.nextLine());
+        try {
+            return Integer.parseInt(myScanner.nextLine());
+        } catch (Exception e) {
+            return 0;
+        }
+
 
     }
 
@@ -92,9 +117,6 @@ public class UserInterface {
         System.out.println(changeStatement);
 
     }
-
-
-
 
 }
 

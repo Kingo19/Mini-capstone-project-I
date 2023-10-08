@@ -3,6 +3,7 @@ package com.techelevator;
 import com.techelevator.ShoppingCart;
 import com.techelevator.items.CandyStoreItem;
 import com.techelevator.items.ChocolateCandy;
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -39,17 +40,25 @@ public class ShoppingCartTest {
         cart.addToCart(candy1);
         cart.addToCart(candy2);
 
-        //TODO: we need to set the quantity here. It's defaulting to 100.
-        //TODO: either that or the expectedSubtotal should be price * 100 for both candyA and candyB
-        //TODO: change the delta to .001
 
-        double expectedSubtotal = (1.25 * 257) + (2 * 2);
+        double expectedSubtotal = (1.25 * 100) + (2 * 100);
         double actualSubtotal = cart.getSubtotal();
 
-
-
-        assertEquals(expectedSubtotal, actualSubtotal, 1.0); // Using delta for double comparison
+        assertEquals(expectedSubtotal, actualSubtotal, .001); // Using delta for double comparison
     }
 
+    @Test
+    public void clearShoppingCart() {
+
+        CandyStoreItem candy1 = new ChocolateCandy("Candy A", "CANDY_A", 1.25, "Y");
+        CandyStoreItem candy2 = new ChocolateCandy("Candy B", "CANDY_B", 2.00, "N");
+
+        cart.addToCart(candy1);
+        cart.addToCart(candy2);
+
+        cart.clearCartItems();
+
+        Assert.assertEquals(0, cart.getCartItems().size());
+    }
 
 }

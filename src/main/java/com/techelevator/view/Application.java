@@ -33,8 +33,12 @@ public class Application {
             else if(choice == 2){
                 makeSale();
             }
-            else{
+            else if (choice == 3) {
                 break;
+
+            } else if (choice == 4) {
+                ui.printMessage("Invalid Menu Input");
+                choice = 0;
             }
 
         }
@@ -93,7 +97,7 @@ public class Application {
                     ui.printMessage("Invalid Candy");
                 }
             }
-            else {
+            else if (choice == 3){
                 //Method for complete sale
                 //gather all info needed for receipt
                 double subtotal = cart.getSubtotal();
@@ -111,18 +115,16 @@ public class Application {
                 //break out to main menu
                 break;
 
+            }
 
+            else if (choice == 4) {
+                ui.printMessage("Invalid Menu Input");
+                choice = 0;
             }
 
         }
 
-
-
-
     }
-
-
-
 
 }
 
